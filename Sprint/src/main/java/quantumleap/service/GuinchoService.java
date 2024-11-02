@@ -2,7 +2,6 @@ package quantumleap.service;
 
 import quantumleap.dominio.Guincho;
 import quantumleap.dominio.RepositorioGuincho;
-import quantumleap.infra.GuinchoDAO;
 
 import java.util.ArrayList;
 

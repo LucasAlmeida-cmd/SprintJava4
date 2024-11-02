@@ -1,4 +1,4 @@
-package quantumleap.infra;
+package quantumleap.infra.dao;
 
 import quantumleap.dominio.Oficina;
 import quantumleap.dominio.RepositorioOficina;
@@ -8,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class OficinaDAO implements RepositorioOficina {
 

@@ -1,4 +1,4 @@
-package quantumleap.infra;
+package quantumleap.infra.dao;
 
 import quantumleap.dominio.Cliente;
 import quantumleap.dominio.RepositorioCliente;
@@ -45,6 +45,28 @@ public class ClienteDAO implements RepositorioCliente {
         }
     }
 
+    public Cliente findByEmailAndPassword(String email, String senha) throws SQLException {
+        Cliente cliente = null;
+        String sql = "SELECT * FROM tb_qfx_cliente WHERE email_cliente = ? AND senha_cliente = ?";
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setString(1, email);
+            stmt.setString(2, senha);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                cliente = new Cliente();
+                cliente.setIdCliente(rs.getLong("id_cliente"));
+                cliente.setNomeCliente(rs.getString("nome_cliente"));
+                cliente.setEmailCliente(rs.getString("email_cliente"));
+                cliente.setTelefoneCliente(rs.getString("telefone_cliente"));
+                cliente.setSenhaCliente(rs.getString("senha_cliente"));
+                cliente.setClientePorto(rs.getInt("cliente_porto") == 1);
+                cliente.setLocalizacaoCliente(rs.getString("localizacao_cliente"));
+            }
+        }
+        return cliente;
+    }
+
+
     public Cliente buscarClientePorId(Long id) {
         Cliente cliente = null;
         String sql = "SELECT * FROM tb_qfx_cliente WHERE id_cliente = ?";
@@ -67,7 +89,6 @@ public class ClienteDAO implements RepositorioCliente {
         }
         return cliente;
     }
-
 
     public ArrayList<Cliente> listarClientes() {
         ArrayList<Cliente> clientes = new ArrayList<>();
@@ -93,7 +114,6 @@ public class ClienteDAO implements RepositorioCliente {
         return clientes;
     }
 
-
     public void atualizarCliente(long idCliente, Cliente cliente) {
         String sql = "UPDATE tb_qfx_cliente SET nome_cliente = ?, email_cliente = ?, telefone_cliente = ?, senha_cliente = ?, cliente_porto = ?, localizacao_cliente = ? WHERE id_cliente = ?";
         try (PreparedStatement pstmt = conexao.prepareStatement(sql)) {
@@ -110,7 +130,6 @@ public class ClienteDAO implements RepositorioCliente {
             e.printStackTrace();
         }
     }
-
 
     public void removerCliente(Long idCliente) {
         String sqlDeleteCliente = "DELETE FROM tb_qfx_cliente WHERE id_cliente = ?";

@@ -1,7 +1,7 @@
 package dominio;
 
 import org.junit.jupiter.api.Test;
-import quantumleap.infra.ClienteDAO;
+import quantumleap.infra.dao.ClienteDAO;
 import quantumleap.dominio.Cliente;
 
 import java.util.ArrayList;

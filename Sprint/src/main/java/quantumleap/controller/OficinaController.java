@@ -1,7 +1,7 @@
 package quantumleap.controller;
 
 import quantumleap.dominio.Oficina;
-import quantumleap.infra.OficinaDAO;
+import quantumleap.infra.dao.OficinaDAO;
 import quantumleap.service.OficinaService;
 
 import javax.ws.rs.*;

@@ -1,13 +1,12 @@
 package quantumleap.controller;
 
 import quantumleap.dominio.Guincho;
-import quantumleap.infra.GuinchoDAO;
+import quantumleap.infra.dao.GuinchoDAO;
 import quantumleap.service.GuinchoService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.awt.*;
 import java.util.ArrayList;
 
 @Path("guinchos")

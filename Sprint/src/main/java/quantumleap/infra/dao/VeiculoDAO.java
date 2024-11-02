@@ -1,11 +1,11 @@
-package quantumleap.infra;
+package quantumleap.infra.dao;
 
-import quantumleap.dominio.Cliente;
 import quantumleap.dominio.RepositorioVeiculo;
 import quantumleap.dominio.Veiculo;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class VeiculoDAO implements RepositorioVeiculo {
 
@@ -108,15 +108,6 @@ public class VeiculoDAO implements RepositorioVeiculo {
                 veiculo.setPlacaVeiculo(rs.getString("placa_veiculo"));
                 veiculo.setIdVeiculo(rs.getLong("id_veiculo"));
                 veiculo.setIdCliente(rs.getLong("id_cliente"));
-//                Veiculo veiculo = new Veiculo(
-//                        rs.getLong("id_veiculo"),
-//                        rs.getString("montadora_veiculo"),
-//                        rs.getString("modelo_veiculo"),
-//                        rs.getInt("ano_veiculo"),
-//                        rs.getDouble("quantidade_quilometros"),
-//                        rs.getString("placa_veiculo"),
-//                        rs.getLong("id_cliente")
-//                );
                 veiculo.setNomeCliente(rs.getString("nome_cliente"));
 
                 veiculos.add(veiculo);
@@ -134,6 +125,33 @@ public class VeiculoDAO implements RepositorioVeiculo {
             throw new RuntimeException(e);
         }
     }
+
+    public ArrayList<Veiculo> buscarVeiculosPorIdCliente(long clienteId) {
+        ArrayList<Veiculo> veiculos = new ArrayList<>();
+        String sql = "SELECT * FROM tb_qfx_veiculo WHERE id_cliente = ?";
+
+        try (PreparedStatement pstmt = conexao.prepareStatement(sql)) {
+            pstmt.setLong(1, clienteId);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    Veiculo veiculo = new Veiculo();
+                    veiculo.setMontadoraVeiculo(rs.getString("montadora_veiculo"));
+                    veiculo.setModeloVeiculo(rs.getString("modelo_veiculo"));
+                    veiculo.setAnoVeiculo(rs.getInt("ano_veiculo"));
+                    veiculo.setQuantidadeQuilometros(rs.getDouble("quantidade_quilometros"));
+                    veiculo.setPlacaVeiculo(rs.getString("placa_veiculo"));
+                    veiculo.setIdVeiculo(rs.getLong("id_veiculo"));
+                    veiculo.setIdCliente(rs.getLong("id_cliente"));
+
+                    veiculos.add(veiculo);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return veiculos;
+    }
+
 
 
 }

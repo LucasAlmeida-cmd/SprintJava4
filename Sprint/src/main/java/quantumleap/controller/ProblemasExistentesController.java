@@ -1,7 +1,7 @@
 package quantumleap.controller;
 
 import quantumleap.dominio.ProblemasExistentes;
-import quantumleap.infra.ProblemasExistentesDAO;
+import quantumleap.infra.dao.ProblemasExistentesDAO;
 import quantumleap.service.ProblemasExistentesService;
 
 import javax.ws.rs.*;

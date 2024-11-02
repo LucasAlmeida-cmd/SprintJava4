@@ -2,7 +2,7 @@ package quantumleap.controller;
 
 
 import quantumleap.dominio.Peca;
-import quantumleap.infra.PecaDAO;
+import quantumleap.infra.dao.PecaDAO;
 import quantumleap.service.PecaService;
 
 import javax.ws.rs.*;

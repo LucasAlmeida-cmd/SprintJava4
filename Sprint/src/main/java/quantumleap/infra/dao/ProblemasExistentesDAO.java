@@ -1,6 +1,5 @@
-package quantumleap.infra;
+package quantumleap.infra.dao;
 
-import quantumleap.dominio.Peca;
 import quantumleap.dominio.ProblemasExistentes;
 import quantumleap.dominio.RepositorioProblemasExistentes;
 

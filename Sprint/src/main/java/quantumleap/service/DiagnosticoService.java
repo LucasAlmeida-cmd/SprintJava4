@@ -2,10 +2,8 @@ package quantumleap.service;
 
 import quantumleap.dominio.Diagnostico;
 import quantumleap.dominio.RepositorioDiagnostico;
-import quantumleap.infra.DiagnosticoDAO;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class DiagnosticoService {
     private RepositorioDiagnostico repositorioDiagnostico;

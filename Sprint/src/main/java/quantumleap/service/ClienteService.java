@@ -39,4 +39,10 @@ public class ClienteService {
         repositorioCliente.removerCliente(id);
         repositorioCliente.fecharConexao();
     }
+
+
+
+    public Cliente authenticateAndRetrieve(String email, String senha) throws Exception {
+        return repositorioCliente.findByEmailAndPassword(email, senha);
+    }
 }

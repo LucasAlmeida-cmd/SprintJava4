@@ -1,4 +1,4 @@
-package quantumleap.infra;
+package quantumleap.infra.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

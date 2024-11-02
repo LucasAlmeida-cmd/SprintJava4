@@ -1,7 +1,7 @@
 package quantumleap.controller;
 
 import quantumleap.dominio.Diagnostico;
-import quantumleap.infra.DiagnosticoDAO;
+import quantumleap.infra.dao.DiagnosticoDAO;
 import quantumleap.service.DiagnosticoService;
 
 import javax.ws.rs.*;

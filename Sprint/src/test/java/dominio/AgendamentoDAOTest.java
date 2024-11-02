@@ -1,8 +1,10 @@
 package dominio;
 
 import org.junit.jupiter.api.Test;
-import quantumleap.infra.*;
 import quantumleap.dominio.*;
+import quantumleap.infra.dao.AgendamentoDAO;
+import quantumleap.infra.dao.DiagnosticoDAO;
+import quantumleap.infra.dao.OficinaDAO;
 
 import java.text.ParseException;
 import java.util.ArrayList;

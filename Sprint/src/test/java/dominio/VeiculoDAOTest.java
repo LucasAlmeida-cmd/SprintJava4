@@ -1,7 +1,7 @@
 package dominio;
 
 import org.junit.jupiter.api.Test;
-import quantumleap.infra.VeiculoDAO;
+import quantumleap.infra.dao.VeiculoDAO;
 import quantumleap.dominio.Veiculo;
 
 import java.text.ParseException;

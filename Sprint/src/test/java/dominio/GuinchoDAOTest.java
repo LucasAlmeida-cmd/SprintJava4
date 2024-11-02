@@ -1,7 +1,7 @@
 package dominio;
 
 import org.junit.jupiter.api.Test;
-import quantumleap.infra.GuinchoDAO;
+import quantumleap.infra.dao.GuinchoDAO;
 import quantumleap.dominio.Guincho;
 
 import java.util.ArrayList;

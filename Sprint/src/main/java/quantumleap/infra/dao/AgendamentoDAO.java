@@ -1,8 +1,6 @@
-package quantumleap.infra;
+package quantumleap.infra.dao;
 
 import quantumleap.dominio.Agendamento;
-import quantumleap.dominio.Diagnostico;
-import quantumleap.dominio.Oficina;
 import quantumleap.dominio.RepositorioAgentamento;
 
 import java.sql.Connection;

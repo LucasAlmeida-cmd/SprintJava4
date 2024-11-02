@@ -1,5 +1,7 @@
 package quantumleap.dominio;
 
+import javax.ws.rs.client.Client;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface RepositorioCliente {
@@ -11,4 +13,5 @@ public interface RepositorioCliente {
     void atualizarCliente(long idCliente, Cliente cliente);
     void removerCliente(Long idCliente);
     void fecharConexao();
+    Cliente findByEmailAndPassword(String email, String senha) throws SQLException;
 }

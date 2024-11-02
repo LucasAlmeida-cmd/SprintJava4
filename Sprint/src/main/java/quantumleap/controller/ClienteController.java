@@ -1,6 +1,6 @@
 package quantumleap.controller;
 
-import quantumleap.infra.ClienteDAO;
+import quantumleap.infra.dao.ClienteDAO;
 import quantumleap.dominio.Cliente;
 import quantumleap.service.ClienteService;
 
@@ -8,6 +8,8 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @Path("clientes")
 public class ClienteController {
@@ -88,5 +90,40 @@ public class ClienteController {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
         }
     }
+
+    @POST
+    @Path("/login")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response login(Map<String, String> loginData) {
+        String email = loginData.get("email");
+        String senha = loginData.get("senha");
+
+        try {
+            Cliente cliente = clienteService.authenticateAndRetrieve(email, senha);
+
+            if (cliente != null) {
+                return Response.status(Response.Status.OK).entity(cliente).build();
+            } else {
+                Map<String, String> response = new HashMap<>();
+                response.put("status", "fail");
+                response.put("message", "Email ou senha incorretos");
+                return Response.status(Response.Status.UNAUTHORIZED).entity(response).build();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Map<String, String> response = new HashMap<>();
+            response.put("status", "error");
+            response.put("message", "Erro ao processar o login");
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(response).build();
+        }
+    }
+
+    private String generateSessionId() {
+        return String.valueOf(System.currentTimeMillis());
+    }
+
+
+
 
 }

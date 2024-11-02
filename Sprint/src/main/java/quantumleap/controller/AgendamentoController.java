@@ -1,7 +1,7 @@
 package quantumleap.controller;
 
 import quantumleap.dominio.Agendamento;
-import quantumleap.infra.AgendamentoDAO;
+import quantumleap.infra.dao.AgendamentoDAO;
 import quantumleap.service.AgendamentoService;
 
 import javax.ws.rs.*;
